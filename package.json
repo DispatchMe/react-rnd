@@ -84,7 +84,7 @@
   },
   "dependencies": {
     "re-resizable": "4.9.3",
-    "react-draggable": "3.0.5",
+    "react-draggable": "github:DispatchMe/react-draggable#077bd8dab90774677db6a5cf28f238f1d1a17f7e",
     "tslib": "1.9.3"
   }
 }
