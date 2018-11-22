@@ -17,10 +17,10 @@ export type DraggableData = {
   lastY: number;
 } & Position;
 
-export type RndDragCallback = (e: Event, data: DraggableData) => void | false;
+export type RndDragCallback = (e: Event | MouseEvent, data: DraggableData) => void | false;
 
 export type RndResizeStartCallback = (
-  e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>,
+  e: MouseEvent | React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>,
   dir: ResizableDirection,
   elementRef: HTMLDivElement,
 ) => void;
@@ -31,7 +31,7 @@ export type ResizableDelta = {
 };
 
 export type RndResizeCallback = (
-  e: MouseEvent | TouchEvent,
+  e: React.MouseEvent | TouchEvent,
   dir: ResizableDirection,
   elementRef: HTMLDivElement,
   delta: ResizableDelta,
@@ -221,7 +221,7 @@ export class Rnd extends React.Component<Props, State> {
     return this.resizable && this.resizable.resizable;
   }
 
-  onDragStart(e: Event, data: DraggableData) {
+  onDragStart(e: MouseEvent, data: DraggableData) {
     if (this.props.onDragStart) {
       this.props.onDragStart(e, data);
     }
@@ -376,7 +376,7 @@ export class Rnd extends React.Component<Props, State> {
   }
 
   onResize(
-    e: MouseEvent | TouchEvent,
+    e: React.MouseEvent | TouchEvent,
     direction: ResizableDirection,
     elementRef: HTMLDivElement,
     delta: { height: number; width: number },
@@ -415,7 +415,7 @@ export class Rnd extends React.Component<Props, State> {
   }
 
   onResizeStop(
-    e: MouseEvent | TouchEvent,
+    e: React.MouseEvent | TouchEvent,
     direction: ResizableDirection,
     elementRef: HTMLDivElement,
     delta: { height: number; width: number },
@@ -502,6 +502,7 @@ export class Rnd extends React.Component<Props, State> {
         y: position.y - top,
       };
     }
+    console.log({ draggablePosition });
     return (
       <Draggable
         ref={c => {

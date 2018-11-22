@@ -1,6 +1,6 @@
 {
-  "name": "react-rnd",
-  "version": "9.0.5",
+  "name": "@dispatch/react-rnd",
+  "version": "9.0.4",
   "description": "",
   "title": "react-rnd",
   "main": "./lib/index.es5.js",
@@ -84,7 +84,7 @@
   },
   "dependencies": {
     "re-resizable": "4.9.3",
-    "react-draggable": "github:DispatchMe/react-draggable#077bd8dab90774677db6a5cf28f238f1d1a17f7e",
+    "react-draggable": "github:DispatchMe/react-draggable#199bc5a393b7fb17d3361bd522a42fc8e70b2578",
     "tslib": "1.9.3"
   }
 }
