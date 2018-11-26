@@ -1,13 +1,14 @@
 import replace from 'rollup-plugin-replace';
-import typescript from 'rollup-plugin-typescript2';
+import jsx from 'rollup-plugin-jsx';
+import babel from 'rollup-plugin-babel';
 
 export default {
-  input: 'src/index.tsx',
+  input: 'src/index.jsx',
   plugins: [
-    typescript({
-      tsconfig: 'tsconfig.json',
-      exclude: ['*.d.ts', 'stories'],
+    babel({
+      exclude: 'node_modules/**'
     }),
+    jsx( {factory: 'React.createElement'} ),
     replace({ 'process.env.NODE_ENV': JSON.stringify('production') }),
   ],
   output: {

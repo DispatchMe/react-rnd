@@ -9,11 +9,12 @@
         },
         "modules": false
       }
-    ]
+    ],
+    "stage-0"
   ],
   "plugins": [
     "transform-class-properties",
-    "transform-object-rest-spread"
+    "external-helpers"
   ],
   "env": {
     "test": {
@@ -26,7 +27,8 @@
               "node": 6
             }
           }
-        ]
+        ],
+        "stage-0"
       ]
     },
     "production": {
@@ -42,12 +44,13 @@
                 "IE 11"
               ]
             }
-          }
+          },
+          "stage-0"
         ]
       ],
       "plugins": [
         "transform-class-properties",
-        "transform-object-rest-spread"
+        "external-helpers"
       ]
     }
   }

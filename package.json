@@ -15,7 +15,7 @@
     "component"
   ],
   "scripts": {
-    "lint": "tslint -c tslint.json 'src/index.tsx'",
+    "lint": "eslint -c eslint.json 'src/index.jsx'",
     "flow": "flow",
     "tsc": "tsc",
     "build:prod:main": "rollup -c scripts/prod.js",
@@ -51,6 +51,8 @@
     "@types/storybook__addon-actions": "3.4.1",
     "@types/storybook__react": "3.0.9",
     "avaron": "0.2.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-stage-0": "^6.24.1",
     "cpy-cli": "2.0.0",
     "enzyme": "3.5.0",
     "enzyme-adapter-react-16": "1.2.0",
@@ -62,18 +64,15 @@
     "react-dom": "16.4.2",
     "react-test-renderer": "16.4.2",
     "rollup": "0.61.1",
-    "rollup-plugin-babel": "3.0.5",
+    "rollup-plugin-babel": "^3.0.7",
     "rollup-plugin-commonjs": "9.1.8",
+    "rollup-plugin-jsx": "^1.0.3",
     "rollup-plugin-node-globals": "1.2.1",
     "rollup-plugin-node-resolve": "3.3.0",
     "rollup-plugin-replace": "2.0.0",
     "rollup-plugin-typescript2": "0.15.0",
     "rollup-watch": "4.3.1",
     "sinon": "7.1.1",
-    "tslint": "5.11.0",
-    "tslint-eslint-rules": "5.4.0",
-    "tslint-plugin-prettier": "2.0.0",
-    "tslint-react": "3.6.0",
     "typescript": "3.0.1"
   },
   "files": [
