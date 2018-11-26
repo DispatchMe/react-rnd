@@ -246,6 +246,8 @@ export class Rnd extends React.Component {
       lockAspectRatioExtraWidth,
       lockAspectRatioExtraHeight,
       size,
+      onClick,
+      onMouseUp,
     } = this.props;
 
     const innerStyle = this.getStyle();
@@ -256,6 +258,7 @@ export class Rnd extends React.Component {
         handle={dragHandleClassName ? `.${dragHandleClassName}` : undefined}
         defaultPosition={defaultValue}
         onMouseDown={onMouseDown}
+        onMouseUp={onMouseUp}
         onStart={this.onDragStart}
         onDrag={this.onDrag}
         onStop={this.onDragStop}
@@ -288,6 +291,7 @@ export class Rnd extends React.Component {
           lockAspectRatioExtraHeight={lockAspectRatioExtraHeight}
           handleStyles={resizeHandleStyles}
           handleClasses={resizeHandleClasses}
+          onClick={onClick}
         >
           {children}
         </Resizable>
