@@ -17,9 +17,9 @@ export default {
     name: 'react-sortable-pane',
     globals: {
       react: 'React',
-      're-resizable': 'Resizable',
+      '@dispatch/re-resizable': 'Resizable',
       'react-draggable': 'Draggable',
     },
   },
-  external: ['react', 're-resizable', 'react-draggable'],
+  external: ['react', '@dispatch/re-resizable', 'react-draggable'],
 };

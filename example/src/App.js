@@ -24,20 +24,10 @@ function findNearestSnapHeight(yPosition) {
   return 0;
 }
 
-const defaultElementHeight = 50;
-
-class App extends React.Component {
+class DraggableComponent extends React.Component {
   state = { x: 0, y: 0, width: 100, height: defaultElementHeight };
-  renderSnapLines() {
-    return snapY
-      .map(yPosition => <div style={{ position: 'absolute', width: '100%', height: '1px', backgroundColor: '#444', top: `${yPosition}px`, left: '0px' }}></div>)
-      .concat(snapX
-        .map(xPosition => <div style={{ position: 'absolute', height: '100%', width: '1px', backgroundColor: '#444', left: `${xPosition}px`, top: '0px' }}></div>)
-      );
-  }
   onDrag = (domEvent, event) => {
     const { x, relativeMouseY } = event;
-    console.log('relative', relativeMouseY)
     this.setState({ x, y: findNearestSnapY(relativeMouseY), height: findNearestSnapHeight(relativeMouseY) });
   }
   onDragStop = (domEvent, event) => {
@@ -48,21 +38,47 @@ class App extends React.Component {
   }
   render() {
     return (
+      <Rnd
+        default={{ width: 100, height: 100, x: 0, y: 0 }}
+        onDrag={this.onDrag}
+        onDragStop={this.onDragStop}
+        onResize={this.onResize}
+        position={{ x: this.state.x, y: this.state.y }}
+        size={{ width: this.state.width, height: this.state.height }}
+        resizeGrid={[50, 1]}
+        dragGrid={[50, 1]}
+      >
+        <div style={{ width: '100%', height: '100%', backgroundColor: 'red' }}>{this.props.children}</div>
+      </Rnd>
+    );
+  }
+}
+
+const defaultElementHeight = 50;
+
+class App extends React.Component {
+  state = { showGrid: true }
+  renderSnapLines() {
+    return snapY
+      .map(yPosition => <div style={{ position: 'absolute', width: '100%', height: '1px', backgroundColor: '#444', top: `${yPosition}px`, left: '0px' }}></div>)
+      .concat(snapX
+        .map(xPosition => <div style={{ position: 'absolute', height: '100%', width: '1px', backgroundColor: '#444', left: `${xPosition}px`, top: '0px' }}></div>)
+      );
+  }
+  renderDraggables() {
+    const result = [];
+    for (let dex = 0; dex < 100; dex += 1) {
+      result.push(<DraggableComponent>{`Drag ${dex}`}</DraggableComponent>);
+    }
+    return result;
+  }
+  render() {
+    return (
       <div style={{ width: '100%', height: '100%', backgroundColor: '#fafafa' }}>
+        <button onClick={() => this.setState({ showGrid: !this.state.showGrid })}>Toggle Grid Stuff</button>
         <div style={{ position: 'absolute', left: '100px', top: '100px', backgroundColor: '#eaeaea', width: '500px', height: '500px', overflow: 'auto' }}>
           {this.renderSnapLines()}
-          <Rnd
-            default={{ width: 100, height: 100, x: 0, y: 0 }}
-            onDrag={this.onDrag}
-            onDragStop={this.onDragStop}
-            onResize={this.onResize}
-            position={{ x: this.state.x, y: this.state.y }}
-            size={{ width: this.state.width, height: this.state.height }}
-            resizeGrid={[50, 1]}
-            dragGrid={[50, 1]}
-          >
-            <div style={{ width: '100%', height: '100%', backgroundColor: 'red' }}>Drag Me</div>
-          </Rnd>
+          {this.state.showGrid && this.renderDraggables()}
         </div>
       </div>
     );

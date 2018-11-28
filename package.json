@@ -82,7 +82,7 @@
     "fixture": "./fixture.html"
   },
   "dependencies": {
-    "re-resizable": "4.9.3",
+    "@dispatch/re-resizable": "4.10.1",
     "react-draggable": "github:DispatchMe/react-draggable#199bc5a393b7fb17d3361bd522a42fc8e70b2578",
     "tslib": "1.9.3"
   }

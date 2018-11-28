@@ -1,6 +1,6 @@
 import React from "react";
 import Draggable from "react-draggable";
-import Resizable from "re-resizable";
+import Resizable from "@dispatch/re-resizable";
 
 const resizableStyle = {
   width: "auto",
