@@ -1,6 +1,6 @@
 {
   "name": "@dispatch/react-rnd",
-  "version": "9.0.8",
+  "version": "9.0.9",
   "description": "",
   "title": "react-rnd",
   "main": "./lib/index.es5.js",
